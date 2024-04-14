@@ -19,6 +19,7 @@
 		if (error) console.log('Error Fetching Teams:', error.message);
 		if (data.length) leaderboard = data;
 		loading = false;
+		sortLeaderboard();
 	}
 
 	async function loadIdeas() {
@@ -27,6 +28,10 @@
 		if (error) console.log('Error Fetching Ideas:', error.message);
 		if (data.length) leaderboard = data;
 		loading = false;
+		sortLeaderboard();
+	}
+	function sortLeaderboard() {
+		leaderboard.sort((a, b) => a.points - b.points);
 	}
 
 	onMount(async () => {
